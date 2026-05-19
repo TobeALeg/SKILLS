@@ -1,0 +1,4 @@
+interface:
+  display_name: "TrekMind UI Style"
+  short_description: "TrekMind editorial UI styling helper"
+  default_prompt: "Use $trekmind-ui-style to restyle this UI or build a new frontend in the TrekMind editorial design system."

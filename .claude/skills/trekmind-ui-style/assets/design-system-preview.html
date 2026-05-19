@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TrekMind 设计系统预览</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+<style>
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: 'Inter', 'PingFang SC', system-ui, sans-serif;
+  color: #1a1a17;
+  background: radial-gradient(900px 500px at 100% -10%, rgba(122,36,24,0.04), transparent 60%), #faf7f1;
+  min-height: 100vh;
+  padding: 64px 32px;
+}
+::selection { background: rgba(181,67,46,0.2); color: #0d0d0c; }
+
+/* ── Tokens ── */
+:root {
+  --paper-50: #fbf8f2; --paper-100: #f6f1e6; --paper-200: #ece4d2; --paper-300: #d8ccaf;
+  --ink-950: #0d0d0c; --ink-900: #1a1a17; --ink-700: #3a3833; --ink-500: #6b675f; --ink-400: #8a857a; --ink-300: #a8a397;
+  --rust-700: #7a2418; --rust-600: #993322; --rust-500: #b5432e; --rust-400: #cc6a55;
+}
+
+/* ── Layout ── */
+.container { max-width: 1024px; margin: 0 auto; }
+.section { margin-bottom: 80px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 48px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+@media (max-width: 768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+/* ── Typography ── */
+.font-serif { font-family: 'Noto Serif SC', Georgia, serif; }
+.font-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+/* ── Components ── */
+.eyebrow { font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 600; color: var(--ink-700); margin-bottom: 12px; }
+.smallcap { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; color: var(--ink-700); }
+.rule { border-top: 1px solid rgba(13,13,12,0.12); padding-top: 40px; }
+.rule-thin { border-top: 1px solid rgba(13,13,12,0.08); padding-top: 24px; }
+.rule-strong { border-top: 2px solid #0d0d0c; padding-top: 20px; }
+
+/* PLACEHOLDER_STYLES */
+.tag { display: inline-flex; align-items: center; gap: 6px; padding: 2px 8px; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; border: 1px solid rgba(13,13,12,0.18); color: #1a1a17; }
+.tag-rust { border-color: rgba(122,36,24,0.4); color: #7a2418; background: rgba(122,36,24,0.04); }
+.tag-ink { background: #0d0d0c; color: #faf7f1; border-color: #0d0d0c; }
+.btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 28px; background: #0d0d0c; color: #fbf8f2; font-weight: 500; font-size: 14px; letter-spacing: 0.025em; border-radius: 2px; border: none; cursor: pointer; transition: background 0.15s; }
+.btn-primary:hover { background: #1a1a17; }
+.btn-primary:disabled { background: #d8ccaf; color: #faf7f1; cursor: not-allowed; }
+.btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 28px; color: #1a1a17; font-weight: 500; font-size: 14px; letter-spacing: 0.025em; border: 1px solid #0d0d0c; border-radius: 2px; background: transparent; cursor: pointer; transition: background 0.15s; }
+.btn-ghost:hover { background: rgba(13,13,12,0.04); }
+.input { width: 100%; padding: 10px 0; background: transparent; color: #1a1a17; font-size: 15px; border: 0; border-bottom: 1px solid rgba(13,13,12,0.18); border-radius: 0; outline: none; transition: border-color 0.15s; font-family: inherit; }
+.input:focus { border-bottom-color: #0d0d0c; }
+.input::placeholder { color: #8a857a; }
+.swatch { width: 100%; height: 64px; border-radius: 2px; margin-bottom: 8px; }
+.swatch-label { font-size: 12px; color: var(--ink-500); font-family: 'JetBrains Mono', monospace; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <header style="margin-bottom: 80px;">
+    <div class="eyebrow">山途远智 · 设计系统</div>
+    <h1 class="font-serif" style="font-size: 48px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; color: var(--ink-950); margin-bottom: 16px;">
+      TrekMind Design System
+    </h1>
+    <p class="font-serif" style="font-size: 18px; color: var(--ink-700); line-height: 1.8; max-width: 720px;">
+      所有小微应用的视觉基础。克制、温暖、编辑感。
+    </p>
+  </header>
+
+  <!-- PLACEHOLDER_CONTENT -->
+
+  <!-- ═══ 色板 ═══ -->
+  <div class="section rule">
+    <div class="eyebrow">色板</div>
+    <h2 class="font-serif" style="font-size: 32px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink-950); margin-bottom: 32px;">三组颜色，够用了</h2>
+
+    <h3 class="font-serif" style="font-size: 18px; font-weight: 600; color: var(--ink-950); margin-bottom: 16px;">Paper（背景）</h3>
+    <div class="grid-3" style="margin-bottom: 40px;">
+      <div><div class="swatch" style="background: #fbf8f2; border: 1px solid rgba(13,13,12,0.08);"></div><div class="swatch-label">paper-50 · #fbf8f2</div></div>
+      <div><div class="swatch" style="background: #f6f1e6;"></div><div class="swatch-label">paper-100 · #f6f1e6</div></div>
+      <div><div class="swatch" style="background: #ece4d2;"></div><div class="swatch-label">paper-200 · #ece4d2</div></div>
+    </div>
+
+    <h3 class="font-serif" style="font-size: 18px; font-weight: 600; color: var(--ink-950); margin-bottom: 16px;">Ink（文字）</h3>
+    <div class="grid-3" style="margin-bottom: 40px;">
+      <div><div class="swatch" style="background: #0d0d0c;"></div><div class="swatch-label">ink-950 · #0d0d0c</div></div>
+      <div><div class="swatch" style="background: #3a3833;"></div><div class="swatch-label">ink-700 · #3a3833</div></div>
+      <div><div class="swatch" style="background: #6b675f;"></div><div class="swatch-label">ink-500 · #6b675f</div></div>
+    </div>
+
+    <h3 class="font-serif" style="font-size: 18px; font-weight: 600; color: var(--ink-950); margin-bottom: 16px;">Rust（强调）</h3>
+    <div class="grid-3">
+      <div><div class="swatch" style="background: #7a2418;"></div><div class="swatch-label">rust-700 · #7a2418</div></div>
+      <div><div class="swatch" style="background: #b5432e;"></div><div class="swatch-label">rust-500 · #b5432e</div></div>
+      <div><div class="swatch" style="background: #cc6a55;"></div><div class="swatch-label">rust-400 · #cc6a55</div></div>
+    </div>
+  </div>
+
+  <!-- ═══ 字体 ═══ -->
+  <div class="section rule">
+    <div class="eyebrow">字体</div>
+    <h2 class="font-serif" style="font-size: 32px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink-950); margin-bottom: 32px;">三套字体，各司其职</h2>
+
+    <div style="margin-bottom: 32px;">
+      <div class="smallcap" style="margin-bottom: 12px; color: var(--rust-700);">Noto Serif SC · 正文 & 标题</div>
+      <p class="font-serif" style="font-size: 24px; font-weight: 600; color: var(--ink-950); line-height: 1.4; margin-bottom: 8px;">
+        之禾最忠实的客户正在离开，但她们离开前已经花了五万块
+      </p>
+      <p class="font-serif" style="font-size: 16px; color: var(--ink-700); line-height: 1.85;">
+        高消费老客户流失信号密集出现；与此同时，平替搜索和折扣蹲守行为同步增长，品牌溢价正在被主动侵蚀。这是一段正文示例，展示 Noto Serif SC 在长文本中的阅读体验。
+      </p>
+    </div>
+
+    <div style="margin-bottom: 32px;">
+      <div class="smallcap" style="margin-bottom: 12px; color: var(--rust-700);">Inter · UI 元素</div>
+      <p style="font-size: 14px; color: var(--ink-700); line-height: 1.6;">
+        This is Inter for UI labels, buttons, and system text. 也用于中文界面元素。Font weight 400/500/600.
+      </p>
+    </div>
+
+    <div>
+      <div class="smallcap" style="margin-bottom: 12px; color: var(--rust-700);">JetBrains Mono · 编号 & 元数据</div>
+      <p class="font-mono" style="font-size: 14px; color: var(--ink-700); line-height: 1.6;">
+        01 02 03 · F01 F02 · Q01 Q02 · 2026-05-19
+      </p>
+    </div>
+  </div>
+
+  <!-- ═══ 组件 ═══ -->
+  <div class="section rule">
+    <div class="eyebrow">组件</div>
+    <h2 class="font-serif" style="font-size: 32px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink-950); margin-bottom: 40px;">可复用的基础元素</h2>
+
+    <!-- Eyebrow & Smallcap -->
+    <div style="margin-bottom: 48px;">
+      <h3 class="font-serif" style="font-size: 18px; font-weight: 600; color: var(--ink-950); margin-bottom: 16px;">文字标签</h3>
+      <div style="margin-bottom: 16px;"><div class="eyebrow">这是 .eyebrow — 板块标识</div></div>
+      <div><div class="smallcap">这是 .smallcap — 次级标签</div></div>
+    </div>
+
+    <!-- Dividers -->
+    <div style="margin-bottom: 48px;">
+      <h3 class="font-serif" style="font-size: 18px; font-weight: 600; color: var(--ink-950); margin-bottom: 24px;">分割线</h3>
+      <div style="margin-bottom: 24px;"><div class="rule-strong"><span class="smallcap">.rule-strong — 重要板块开头</span></div></div>
+      <div style="margin-bottom: 24px;"><div class="rule"><span class="smallcap">.rule — section 之间</span></div></div>
+      <div><div class="rule-thin"><span class="smallcap">.rule-thin — 列表项之间</span></div></div>
+    </div>
+
+    <!-- Tags -->
+    <div style="margin-bottom: 48px;">
+      <h3 class="font-serif" style="font-size: 18px; font-weight: 600; color: var(--ink-950); margin-bottom: 16px;">标签</h3>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <span class="tag">默认标签</span>
+        <span class="tag tag-rust">顾问视角</span>
+        <span class="tag tag-ink">推荐</span>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div style="margin-bottom: 48px;">
+      <h3 class="font-serif" style="font-size: 18px; font-weight: 600; color: var(--ink-950); margin-bottom: 16px;">按钮</h3>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+        <button class="btn-primary">确认 →</button>
+        <button class="btn-ghost">了解更多</button>
+        <button class="btn-primary" disabled>不可用状态</button>
+      </div>
+    </div>
+
+    <!-- Inputs -->
+    <div style="margin-bottom: 48px;">
+      <h3 class="font-serif" style="font-size: 18px; font-weight: 600; color: var(--ink-950); margin-bottom: 16px;">输入框</h3>
+      <div style="max-width: 400px;">
+        <div class="smallcap" style="margin-bottom: 12px;">品牌名</div>
+        <input class="input" type="text" placeholder="例：蕉内" />
+      </div>
+    </div>
+
+    <!-- Numbers -->
+    <div>
+      <h3 class="font-serif" style="font-size: 18px; font-weight: 600; color: var(--ink-950); margin-bottom: 16px;">编号</h3>
+      <div style="display: flex; gap: 24px;">
+        <span class="font-mono" style="font-size: 13px; color: var(--rust-700);">01</span>
+        <span class="font-mono" style="font-size: 13px; color: var(--rust-700);">02</span>
+        <span class="font-mono" style="font-size: 13px; color: var(--rust-700);">03</span>
+        <span class="font-mono" style="font-size: 13px; color: var(--rust-700);">F01</span>
+        <span class="font-mono" style="font-size: 13px; color: var(--rust-700);">Q02</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 排版示例 ═══ -->
+  <div class="section rule">
+    <div class="eyebrow">排版示例</div>
+    <h2 class="font-serif" style="font-size: 32px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink-950); margin-bottom: 32px;">一个典型的内容板块长这样</h2>
+
+    <div class="rule" style="max-width: 720px;">
+      <div class="eyebrow">核心发现</div>
+      <h2 class="font-serif" style="font-size: 28px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink-950); margin-bottom: 12px;">
+        消费者在搜「不闷热的无尺码」，但搜索结果全是负面
+      </h2>
+      <p class="font-serif" style="font-size: 15px; color: var(--ink-700); line-height: 1.85; margin-bottom: 32px;">
+        评论里反复出现、但现有品牌都没接住的真实需求。先看到的人先动手。
+      </p>
+
+      <div class="rule-thin" style="display: flex; align-items: flex-start; gap: 16px; padding-top: 20px; margin-bottom: 20px;">
+        <span class="font-mono" style="font-size: 13px; color: var(--rust-700); margin-top: 2px;">01</span>
+        <div>
+          <p class="font-serif" style="font-size: 17px; color: var(--ink-950); font-weight: 500; line-height: 1.5;">
+            有一群人愿意为「三个月不变形」多付 50%
+          </p>
+          <p class="font-serif" style="font-size: 14px; color: var(--ink-700); line-height: 1.7; margin-top: 8px;">
+            但没有品牌在主打这个承诺
+          </p>
+        </div>
+      </div>
+
+      <div class="rule-thin" style="display: flex; align-items: flex-start; gap: 16px; padding-top: 20px;">
+        <span class="font-mono" style="font-size: 13px; color: var(--rust-700); margin-top: 2px;">02</span>
+        <div>
+          <p class="font-serif" style="font-size: 17px; color: var(--ink-950); font-weight: 500; line-height: 1.5;">
+            「穿一次就起球」是出现频率最高的负面关键词
+          </p>
+          <p class="font-serif" style="font-size: 14px; color: var(--ink-700); line-height: 1.7; margin-top: 8px;">
+            跨 3 个品牌、超过 40 条评论提到
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 注意事项 ═══ -->
+  <div class="section rule">
+    <div class="eyebrow">注意事项</div>
+    <h2 class="font-serif" style="font-size: 32px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink-950); margin-bottom: 24px;">五条铁律</h2>
+    <ol class="font-serif" style="font-size: 16px; color: var(--ink-700); line-height: 2.2; padding-left: 24px;">
+      <li>border-radius 只用 2px，不要圆角</li>
+      <li>不用阴影，靠分割线和留白区分层级</li>
+      <li>只有 rust 一个强调色，不引入其他彩色</li>
+      <li>字重克制：正文 400/500，标题 600/700</li>
+      <li>间距宽松：宁可多留白，不要挤</li>
+    </ol>
+  </div>
+
+</div>
+</body>
+</html>
