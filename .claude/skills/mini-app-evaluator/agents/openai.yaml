@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mini App Evaluator"
+  short_description: "按六维权重评估、打分、排序小微应用想法，筛出最适合做的方向"
+  default_prompt: "Use $mini-app-evaluator to score this mini app idea or rank my candidate list and recommend the best options."
