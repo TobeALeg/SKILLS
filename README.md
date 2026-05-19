@@ -2,6 +2,8 @@
 
 个人 Codex / Claude Code skill 集合。
 
+License: MIT
+
 ## Included Skills
 
 - `trekmind-ui-style`: TrekMind 编辑感前端设计系统。用于把现有 HTML、Vue 3、NextJS、Tailwind UI 改成 TrekMind 风格，或从零构建符合这套风格的新前端。
