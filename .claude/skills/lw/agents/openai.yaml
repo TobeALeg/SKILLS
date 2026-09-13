@@ -1,0 +1,6 @@
+interface:
+  display_name: "LW"
+  short_description: "Update or query the project LLM Wiki"
+  default_prompt: "Update the current project's LLM Wiki, including durable context from this conversation."
+policy:
+  allow_implicit_invocation: false
