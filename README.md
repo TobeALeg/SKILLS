@@ -1,6 +1,6 @@
 # SKILLS
 
-个人 Agent Skills 集合。
+个人 Agent Skills 与 Agent Plugin 集合。
 
 License: MIT
 
@@ -13,6 +13,22 @@ License: MIT
 ## Repository Layout
 
 技能源码统一位于根目录的 `skills/<skill-name>/`，每个 skill 的根部都有一个 `SKILL.md`。
+
+## LLM Wiki MCP 服务
+
+LLM Wiki 现在也提供标准 Agent Plugin 和本地 MCP 服务：
+
+```text
+plugins/llm-wiki/
+├── plugin.json                 # Agent Plugins 1.0 portable manifest
+├── mcp.json                    # portable stdio MCP configuration
+├── .codex-plugin/plugin.json   # Codex compatibility manifest
+├── .mcp.json                   # Codex compatibility MCP configuration
+├── skills/lw/
+└── llm_wiki_mcp/               # local MCP server
+```
+
+完整安装、项目白名单、本地启动和 ChatGPT Secure MCP Tunnel 接入方式见 [`plugins/llm-wiki/README.md`](plugins/llm-wiki/README.md)。
 
 ## Claude Code
 
