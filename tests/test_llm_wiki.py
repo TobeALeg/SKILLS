@@ -7,7 +7,7 @@ from unittest import mock
 
 
 REPO_ROOT = Path(__file__).parents[1]
-SCRIPT = REPO_ROOT / "skills" / "llm-wiki" / "scripts" / "wiki.py"
+SCRIPT = REPO_ROOT / "skills" / "lw" / "scripts" / "wiki.py"
 SPEC = importlib.util.spec_from_file_location("llm_wiki", SCRIPT)
 wiki = importlib.util.module_from_spec(SPEC)
 assert SPEC.loader
