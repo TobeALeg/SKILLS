@@ -1,6 +1,6 @@
 # SKILLS
 
-个人 Codex / Claude Code skill 集合。
+个人 Agent Skills 集合。
 
 License: MIT
 
@@ -11,40 +11,39 @@ License: MIT
 - `llm-wiki`: 从项目文件和选定的 Agent 对话中，自动维护带来源记录的项目级知识库。默认使用 DeepSeek V4.1 Flash。
 - `lw`: `llm-wiki` 的显式快捷入口。在 Codex 的 slash 菜单中输入 `/lw` 使用。
 
+## Repository Layout
+
+技能源码统一位于根目录的 `skills/<skill-name>/`，每个 skill 的根部都有一个 `SKILL.md`。
+
 ## Claude Code
 
-Claude Code 会识别项目里的 `.claude/skills/<skill-name>/SKILL.md`。
-
-在这个仓库里使用 Claude Code 时，skills 已经位于：
+如果想安装成个人级 Claude Code skill，可以复制到：
 
 ```text
-.claude/skills/trekmind-ui-style/SKILL.md
-.claude/skills/mini-app-evaluator/SKILL.md
+~/.claude/skills/<skill-name>/
 ```
-
-如果想装成个人级 Claude Code skill，可以复制到：
 
 ```bash
 mkdir -p ~/.claude/skills
-cp -R .claude/skills/trekmind-ui-style ~/.claude/skills/
-cp -R .claude/skills/mini-app-evaluator ~/.claude/skills/
-cp -R .claude/skills/llm-wiki ~/.claude/skills/
-cp -R .claude/skills/lw ~/.claude/skills/
+cp -R skills/trekmind-ui-style ~/.claude/skills/
+cp -R skills/mini-app-evaluator ~/.claude/skills/
+cp -R skills/llm-wiki ~/.claude/skills/
+cp -R skills/lw ~/.claude/skills/
 ```
 
 ## Codex
 
-Codex 可用的安装位置是：
+Codex 和其他 Agent Skills-compatible 客户端的用户级安装位置是：
 
 ```bash
-mkdir -p ~/.codex/skills
-cp -R .claude/skills/trekmind-ui-style ~/.codex/skills/
-cp -R .claude/skills/mini-app-evaluator ~/.codex/skills/
-cp -R .claude/skills/llm-wiki ~/.codex/skills/
-cp -R .claude/skills/lw ~/.codex/skills/
+mkdir -p ~/.agents/skills
+cp -R skills/trekmind-ui-style ~/.agents/skills/
+cp -R skills/mini-app-evaluator ~/.agents/skills/
+cp -R skills/llm-wiki ~/.agents/skills/
+cp -R skills/lw ~/.agents/skills/
 ```
 
-安装后重启 Codex，让新的 skill 生效。
+Codex 会扫描项目中的 `.agents/skills` 和用户级的 `~/.agents/skills`。安装后如果 skill 没有出现，再重启 Codex。
 
 ### LLM Wiki 配置
 
@@ -55,9 +54,9 @@ export DEEPSEEK_API_KEY="..."
 在项目目录内初始化并更新：
 
 ```bash
-python ~/.codex/skills/llm-wiki/scripts/wiki.py init
-python ~/.codex/skills/llm-wiki/scripts/wiki.py update --episode "本轮对话里需要长期保留的结论"
-python ~/.codex/skills/llm-wiki/scripts/wiki.py context "要查询的项目知识"
+python ~/.agents/skills/llm-wiki/scripts/wiki.py init
+python ~/.agents/skills/llm-wiki/scripts/wiki.py update --episode "本轮对话里需要长期保留的结论"
+python ~/.agents/skills/llm-wiki/scripts/wiki.py context "要查询的项目知识"
 ```
 
 模型默认为 `deepseek-flash`，API 地址默认为 `https://api.deepseek.com`。项目只需按需编辑 `.llm-wiki/purpose.md`；目录、页面索引和来源记录由 skill 自动管理。
@@ -78,7 +77,7 @@ python ~/.codex/skills/llm-wiki/scripts/wiki.py context "要查询的项目知�
 ## Skill Layout
 
 ```text
-.claude/skills/trekmind-ui-style/
+skills/trekmind-ui-style/
 ├── SKILL.md
 ├── agents/openai.yaml
 ├── references/
@@ -88,19 +87,19 @@ python ~/.codex/skills/llm-wiki/scripts/wiki.py context "要查询的项目知�
     ├── trekmind-base.css
     └── design-system-preview.html
 
-.claude/skills/mini-app-evaluator/
+skills/mini-app-evaluator/
 ├── SKILL.md
 ├── agents/openai.yaml
 └── references/
     └── evaluation-rubric.md
 
-.claude/skills/llm-wiki/
+skills/llm-wiki/
 ├── SKILL.md
 ├── agents/openai.yaml
 ├── references/architecture.md
 └── scripts/wiki.py
 
-.claude/skills/lw/
+skills/lw/
 ├── SKILL.md
 └── agents/openai.yaml
 ```
